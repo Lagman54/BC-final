@@ -31,6 +31,7 @@
   }
 
   .nft-id,
+  .nft-seller,
   .nft-price {
     margin: 4px 0;
     font-size: 14px;

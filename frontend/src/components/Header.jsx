@@ -29,6 +29,7 @@ export default function Header() {
         <Link to="/" className="nav-link">Home</Link>
         <Link to="/mint" className="nav-link">Mint</Link>
         <Link to="/buy" className="nav-link">Buy</Link>
+        <Link to="/profile" className="nav-link">Profile</Link>
       </nav>
       <button onClick={connectWallet} className="wallet-button">
         {account ? `${account.slice(0, 6)}...${account.slice(-4)}` : "Connect Wallet"}
