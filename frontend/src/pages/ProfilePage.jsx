@@ -53,9 +53,10 @@ export default function Profile() {
     };
 
     const handleGiftNFT = async (tokenId) => {
+        const nftContract = await getNFTContract();
+        const market = await getMarketContract();
+
         try {
-            const nftContract = getNFTContract();
-            const marketContract = getMarketContract();
             const recipient = giftAddress[tokenId];
 
             if (!recipient || recipient.length !== 42) {
@@ -64,11 +65,12 @@ export default function Profile() {
             }
             const approvedAddress = await nftContract.getApproved(tokenId);
             if (approvedAddress.toLowerCase() !== MARKET_ADDRESS.toLowerCase()) {
+                alert("NFT needed to be approved first. Transaction for approval is pending.")
                 const tx = await nftContract.approve(MARKET_ADDRESS, tokenId);
                 await tx.wait();
                 console.log(`Approved NFT [ID:${tokenId}]`);
             }
-            const giftTx = await marketContract.giftNFT(tokenId, recipient);
+            const giftTx = await market.giftNFT(tokenId, recipient);
             await giftTx.wait();
             alert(`NFT [ID:${tokenId}] gifted successfully`);
 

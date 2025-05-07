@@ -2,8 +2,8 @@ import { ethers } from 'ethers';
 import NFTContractABI from '../contracts/NFTContractABI.json';
 import NFTMarketABI from '../contracts/NFTMarketABI.json';
 
-const NFT_ADDRESS = '0x138216d3E86241b31b9200Ae747103e754022aAd';
-export const MARKET_ADDRESS = '0x3B38Fc5AC76F45e2199116eE24552dC1bDCf5315';
+const NFT_ADDRESS = '0x565FB145C2FE5E248D8D2Da308ebc81c63142305';
+export const MARKET_ADDRESS = '0xba7572D904a6E3029707537eBcE2E9F9b71Da635';
 
 export async function getProviderAndSigner() {
   if (!window.ethereum) throw new Error("No crypto wallet found");

@@ -45,8 +45,8 @@ contract NFTMarket is Ownable {
 
         nftListings[tokenId].active = false;
 
-        // (bool sent, ) = payable(listing.seller).call{value: msg.value}("");
-        bool sent = payable(listing.seller).send(msg.value);
+        (bool sent, ) = payable(listing.seller).call{value: msg.value}("");
+        // bool sent = payable(listing.seller).send(msg.value);
         require(sent, "Payment failed");
 
         nftContract.safeTransferFrom(listing.seller, msg.sender, tokenId);
