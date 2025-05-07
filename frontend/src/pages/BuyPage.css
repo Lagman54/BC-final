@@ -1,0 +1,53 @@
+.buy-page {
+    padding: 20px;
+  }
+
+  .market-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+
+  .nft-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+
+  .nft-card {
+    border: 1px solid #ccc;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  .nft-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+
+  .nft-id,
+  .nft-price {
+    margin: 4px 0;
+    font-size: 14px;
+  }
+
+  .buy-btn {
+    margin-top: 8px;
+    background-color: #3b82f6;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .buy-btn:hover {
+    background-color: #2563eb;
+  }
