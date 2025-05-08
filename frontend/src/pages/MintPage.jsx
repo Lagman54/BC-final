@@ -4,6 +4,7 @@ import './MintPage.css';
 
 export default function MintPage() {
   const [file, setFile] = useState(null);
+  const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const JWT = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiIyODcwOWI1Yy1kMmY0LTQxYzYtYTBhNi00ZTc3M2RmM2I5NTIiLCJlbWFpbCI6ImFpYmFyLmt5ZGlhcnhhbkBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicGluX3BvbGljeSI6eyJyZWdpb25zIjpbeyJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MSwiaWQiOiJGUkExIn0seyJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MSwiaWQiOiJOWUMxIn1dLCJ2ZXJzaW9uIjoxfSwibWZhX2VuYWJsZWQiOmZhbHNlLCJzdGF0dXMiOiJBQ1RJVkUifSwiYXV0aGVudGljYXRpb25UeXBlIjoic2NvcGVkS2V5Iiwic2NvcGVkS2V5S2V5IjoiN2JhMGNjNzJjYzVkZjBjNDY0MDMiLCJzY29wZWRLZXlTZWNyZXQiOiJkNzViNjlhY2VjZjAwZjE2NGY2ZTA0MWMzMDlhMzQ0M2EyZjE5OTJiYmMwOTA1NWY4MGU0NzgzNWIyODZkZWQ3IiwiZXhwIjoxNzc4MTUzODA1fQ.rnkw-uqqnfmoygHTufLnqlAc8vMGWHB5L6lPHzFmw8I';
@@ -31,7 +32,7 @@ export default function MintPage() {
 
   const uploadMetadataToPinata = async (imageUrl) => {
     const metadata = {
-      name: "My NFT",
+      name: name,
       description: "Minted via frontend",
       image: imageUrl,
     };
@@ -57,6 +58,7 @@ export default function MintPage() {
 
     try {
       setIsLoading(true);
+      console.log("uploading nft: ", name);
       const imageUrl = await uploadImageToPinata(file);
       const contract = await getNFTContract();
       const tokenURI = await uploadMetadataToPinata(imageUrl);
@@ -74,6 +76,15 @@ export default function MintPage() {
   return (
     <div className="mint-container">
       <h2 className="mint-title">Mint New NFT</h2>
+      <input
+        type="text"
+        placeholder="Nft name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        className="input-field"
+      />
+      <br></br>
+      <br></br>
       <input
         type="file"
         accept="image/*"
